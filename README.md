@@ -90,6 +90,9 @@ module mux4_to_1_gate (
     or (Y, A_and, B_and, C_and, D_and);
 endmodule
 
+![Screenshot (104)](https://github.com/user-attachments/assets/fd7ee242-c855-402e-8c51-f4745dc7551d)
+
+
 4:1 MUX Data Flow Implementation
 
 // mux4_to_1_dataflow.v
@@ -107,6 +110,9 @@ module mux4_to_1_dataflow (
                (S1 & ~S0 & C) |
                (S1 & S0 & D);
 endmodule
+
+![Screenshot (105)](https://github.com/user-attachments/assets/4510c165-881d-4d47-bf07-236a286d7ea2)
+
 
 4:1 MUX Behavioral Implementation
 
@@ -130,6 +136,9 @@ module mux4_to_1_behavioral (
         endcase
     end
 endmodule
+
+![Screenshot (105)](https://github.com/user-attachments/assets/4e6cf925-46b6-4e48-94f9-dfe9fc455b5a)
+
 
 4:1 MUX Structural Implementation
 
@@ -163,6 +172,9 @@ module mux4_to_1_structural (
     // Instantiate the final 2:1 MUX
     mux2_to_1 mux_final (.A(mux_low), .B(mux_high), .S(S1), .Y(Y));
 endmodule
+
+![Screenshot (106)](https://github.com/user-attachments/assets/78794c91-6876-44c3-91f0-a1be4ed91ca4)
+
 
 Testbench Implementation
 

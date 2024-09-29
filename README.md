@@ -142,36 +142,24 @@ endmodule
 
 4:1 MUX Structural Implementation
 
-// mux2_to_1.v
-module mux2_to_1 (
-    input wire A,
-    input wire B,
-    input wire S,
-    output wire Y
-);
-    assign Y = S ? B : A;
+module multiplexer(input wire [3:0] I, input wire [1:0] S,  output wire Y );
+wire S0, S1;
+wire I0, I1, I2, I3;
+
+not (S0, S[0]);
+not (S1, S[1]);
+
+
+and (I0, I[0], S0, S1);  // I0 when S = 00
+and (I1, I[1], S[0], S1); // I1 when S = 01
+and (I2, I[2], S0, S[1]); // I2 when S = 10
+and (I3, I[3], S[0], S[1]); // I3 when S = 11
+
+
+or (Y, I0, I1, I2, I3);
+
 endmodule
-
-
-// mux4_to_1_structural.v
-module mux4_to_1_structural (
-    input wire A,
-    input wire B,
-    input wire C,
-    input wire D,
-    input wire S0,
-    input wire S1,
-    output wire Y
-);
-    wire mux_low, mux_high;
-
-    // Instantiate two 2:1 MUXes
-    mux2_to_1 mux0 (.A(A), .B(B), .S(S0), .Y(mux_low));
-    mux2_to_1 mux1 (.A(C), .B(D), .S(S0), .Y(mux_high));
-
-    // Instantiate the final 2:1 MUX
-    mux2_to_1 mux_final (.A(mux_low), .B(mux_high), .S(S1), .Y(Y));
-endmodule
+ 
 
 ![Screenshot (106)](https://github.com/user-attachments/assets/78794c91-6876-44c3-91f0-a1be4ed91ca4)
 

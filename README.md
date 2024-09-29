@@ -253,6 +253,8 @@ module mux4_to_1_tb;
     end
 endmodule
 
+![Screenshot (112)](https://github.com/user-attachments/assets/8e1560e6-14f9-4c2f-9f5b-bc4546f96a13)
+
 
 Sample Output
 
